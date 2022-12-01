@@ -1,0 +1,37 @@
+Basic
+==================================================================================================================
+git init                    (Initialize a project to be tracked by git)
+git status                  (Inspects the working directory and tells if any changes are not added or committed)
+git add filenames           (Adds file from working directory to the staging area so it's changes can be tracked)
+git add .                   (Adds every file from working directory to the staging area so it's changes can be tracked)
+
+git diff filename           (Once a file is tracked, checks differences between the file in working area and staging area)
+git commit -m "msg"         (A commit permanently stores all changes from the staging area to the repository.)
+
+git log                     (Commits are stored chronologically in the repository and can be viewed with git log.)
+$ git log
+commit 93ed4363279adc3e11fbf6c3a6813b7ef3707dfa     (40 character code SHA to uniquely identify the commit)
+Author: codecademy <ccuser@codecademy.com>          (Author)
+Date:   Sun Oct 23 00:44:24 2022 +0000              (Date time of the commit)
+Complete file line of dialogue                      (Commit message)
+
+git log --oneline           Shows the list of commits in one line format.
+git log -S "keyword"        Displays commits that contain the keyword in the message.
+git log --oneline --graph - --graph     Displays a visual representation of how the branches and commits were created in order to help you make sense of your repository history.
+
+Stashing
+==================================================================================================================
+git stash                   Store you local work temporarily in a hidden dir so you can switch branch and do some other work.
+git stash pop               Retrieve the work that you had stashed
+
+
+Backtracking
+==================================================================================================================
+git show HEAD               In Git, the commit you are currently on (most recent commit) is known as the HEAD commit.
+                            The output of this displays everything git log displays + all the file changes that were committed.
+
+git checkout HEAD filename  Overwrite changes in the working directory and replace it by checking out the HEAD
+git checkout -- filename    Overwrite changes in the working directory and replace it by checking out the HEAD
+
+git reset HEAD filename     Overwrite file in the staging area to be the same as HEAD. Doesn't discard from working area, just removes from staging area.
+git reset commit_SHA        Set HEAD to a particular commit identified by first 7 chars of the SHA.

@@ -1,0 +1,38 @@
+Defines a one-to-many communication between objects so that when one object changes state, all of its dependents are notified.
+
+interface Observer{
+       public void update(double price);
+}
+
+interface Subject {
+       public void addObserver(Observer observer);
+       public void removeObserver(Observer observer);
+       public void notify();
+}
+
+
+class MarketData implements Subject {
+     private List<Observer> list = new ArrayList<Observer>();
+
+     public void addObserver( Observer o ){
+        list.add( o );
+     }
+
+     public void removeObserver( Observer o ){
+        list.remove( o );
+     }
+
+     public void mdArrivedFromExchange( double price){
+        for( Observer o : list ){
+            p.update( price );
+        }
+     }
+}
+
+
+class Dashboard implements Observer {
+
+    public void update(double price){
+        //Display price!!
+    }
+}

@@ -1,0 +1,32 @@
+Bits and Bytes:
+Base 2 numbers (0, 1) are also called binary numbers.
+
+In binary number, the most significant Bit (left most) bit is the sign bit.
+If the MSB is 0, that means the number is positive.
+
+Positive numbers
+----------------
+Positive numbers are stored just as simple binary numbers.
+So number int 15, will be stored as 00000000 00000000 00000000 00001111 (32 bit number)
+
+Positive numbers
+----------------
+Negative numbers are stored as:
+
+a) Take the number, convert to binary and perform 1’s complement.
+(In 1’s compliment, bits are flipped so, 0’s are changed to 1’s and 1’s are changed to 0’s.)
+b) Add 1 to 1’s compliment.
+
+Example:
+Converting 10 to -10 using 2’s compliment.
+10 -> 1010 (binary) -> 0101 (1s compliment) -> 0110 (2's compliment)
+
+boolean: 	Represents one bit of information.
+char: 		Represents single 16-bit Unicode character.
+byte: 		Represents  8-bit signed two's complement integer.
+Short: 		Represents 16-bit signed two's complement integer.
+int: 		Represents 32-bit signed two's complement integer.
+long:		Represents 64-bit signed two's complement integer.
+float: 		Represents a single-precision 32-bit IEEE 754 floating point.
+double: 	Represents a double-precision 64-bit IEEE 754 floating point.
+

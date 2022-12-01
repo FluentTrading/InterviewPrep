@@ -1,0 +1,14 @@
+Flyweight pattern is used to reduce the memory footprint. It is based on a factory which recycles created objects by storing them after creation.
+
+
+private static Map<Color, Vehicle> vehiclesCache = new HashMap<>();
+
+public static Vehicle createVehicle( Color color ){
+
+    Vehicle newVehicle = vehiclesCache.computeIfAbsent(color, newColor -> {
+        Engine newEngine = new Engine();
+        return new Car(newEngine, newColor);
+    });
+
+    return newVehicle;
+}

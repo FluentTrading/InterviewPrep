@@ -1,0 +1,103 @@
+Product:
+ProductId,  Name]
+[1,         Apple]
+[2,         Orange]
+[3,         Pear]
+
+Order:
+[ProductId, Quantity]
+[1,         7]
+[2,         8]
+
+What's the query to produce
+[ProductId, Name, Quantity]
+[1, Apple,  7]
+[2, Orange, 8]
+[3, Pear,   0]
+==============================================================================
+
+Select ProductId, Name, Quantity
+From Product as p
+left outer join Order as o
+on p.productId = o.productId
+order by p.ProductId asc
+
+
+Cities with more customers than average
+==============================================================================
+Write a query which will return all cities with more customers than the average number of customer of all cities.
+For each such city, return the country name, the city name and the number of customers.
+Order the result by country name ascending.
+
+country:
+id  country_name
+1   Austria
+2   Germany
+3   United Kingdom
+
+city:
+id  city_name   country_id
+1   Wien        1
+2   Berlin      2
+3   Hamburg     2
+4   London      3
+
+customer:
+id  customer_name   city_id
+1   cust1           1
+2   cust2           4
+3   cust3           3
+4   cust4           1
+5   cust5           2
+6   cust6           1
+7   cust7           4
+8   cust8           2
+
+WITH CountsTable AS (
+  SELECT country.country_name, city.city_name, COUNT(customer.city_id) AS cityCount
+  FROM country
+  JOIN city on country.id = city.country_id
+  JOIN customer on city.id = customer.city_id
+  GROUP BY city_name,country.country_name
+)
+SELECT *
+FROM CountsTable
+WHERE cityCount > (SELECT AVG(cityCount) FROM CountsTable)
+
+
+
+Count the Employees
+==============================================================================
+Write a query to print Ids of the companies with more than 10000 employees. Order Ids in ascending order.
+
+Company
+ID      Name            Employees
+1       IBM             50,000
+2       Citigroup       25,000
+3       Prorender       2
+4       JP Morgan       50,000
+5       Verace          1
+
+select ID from Company c
+WHERE c.Employees > 10000
+Order by ID asc
+
+
+
+Employee and Manager
+==============================================================================
+Write a query to list Id
+
+Employee
+ID      Name        ManagerId
+100     Steven      0
+101     Neena       100
+102     Lex         100
+103     Alex        102
+104     Bruce       103
+105     David       103
+
+SELECT e.ID as 'EmployeeId, e.Name as 'Employee, m.ID as 'ManagerId', m.Name as 'Manager'
+FROM Employee e
+join employees m
+ON (e.ID = m.ID);

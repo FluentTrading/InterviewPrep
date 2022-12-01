@@ -1,0 +1,24 @@
+Dynamic Programming:
+
+0/1 Knapsack        = We can choose the item (then we can either use the item or won't) or can't.
+Unbounded Knapsack  = We can choose the item multiple times (if we didn't discard it).
+Fractional Knapsack = Can use fraction of an item. (Not a DP problem, solved via greedy method).
+
+
+How to recognize Dynamic Programming questions
+1. There are choices (Coin change problem, can choose coin1 or coin2). Can use recursion, if there are more than 1 recursive function calls then can use DP.
+2. Ask for something optimal (min, max, largest etc)
+
+Recursion:
+Base Case: Takes smallest valid value as input and returns an output.
+Choice Diagram:
+
+Memoization (Top Down):
+Base Case
+Choice Diagram
+Memoize with dp[i+1][j+1] (i and j are variable that change (index, capacity) in the question. Need (i+1) as with i we can only access i-1 elements.)
+
+Dynamic Programming (Bottom Up)
+Create dp[i+1][j+1]
+Populate with base case and choice diagram logic iteratively.
+

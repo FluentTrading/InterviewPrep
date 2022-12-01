@@ -1,0 +1,26 @@
+Decorator lets you add new behaviors to objects by wrapping them with other objects that contain the behaviors.
+
+public interface PizzaMaker{
+    Pizza makePizza();
+}
+
+public class CheesePizza implements PizzaMaker{
+
+    Pizza makePizza(){
+        new Pizza("Cheese");
+    }
+}
+
+
+public class PizzaToppingDecorator implements PizzaMaker{
+
+    private Pizza p;
+    PizzaToppingDecorator( Pizza p ){
+        this.p = p;
+    }
+
+    Pizza makePizza( ){
+        new PizzaWithToppings(p, "Peppers", "Garlic");
+    }
+
+}

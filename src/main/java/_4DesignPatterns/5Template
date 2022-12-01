@@ -1,0 +1,33 @@
+
+//Defines the skeleton of an operation in terms of a number of high-level steps.
+//These steps are implemented by additional helper methods which can be provided by the same class or the sub-class
+
+public abstract class TeaBuilder {
+
+    //Defines the template for building tea
+    public final Computer build(){
+        boilWater();
+        addTea();
+        addMilkAndSugar();
+        return new Tea(computerParts);
+    }
+
+    public abstract void boilWater();
+    public abstract void addTea();
+    public abstract void addMilkAndSugar();
+
+}
+
+
+public class IndianTea extends TeaBuilder {
+
+    @Override
+    public void boilWater() {}
+
+    @Override
+    public void addTea() {}
+
+    @Override
+    public void addMilkAndSugar() {}
+
+}

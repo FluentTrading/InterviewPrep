@@ -1,0 +1,11 @@
+Most of the strings are encoded in Latin-1 format and require one byte per character and do not require the whole 2-byte space provide in older String class.
+String class, after jdk 9, will shift from UTF-16 char array to a byte array plus an encoding-flag field.
+The encoding field will show whether the characters are stored using UTF-16 or Latin-1 format.
+
+public char charAt(int index) {
+    if (isLatin1()) {
+        return StringLatin1.charAt(value, index);
+    } else {
+        return StringUTF16.charAt(value, index);
+    }
+}

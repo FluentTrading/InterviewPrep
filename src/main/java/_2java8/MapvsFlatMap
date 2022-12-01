@@ -1,0 +1,18 @@
+Map and FlatMap both transform an input Stream<T> to an output Stream<R>.
+Map produces 1 output for each input value.
+FlatMap can produce 0 or more values for each input value
+
+Map:
+Arrays.stream(new int[]{1, 2, 3}).map( x -> x *x)
+Given a stream of numbers, we create a new stream of its squares.
+
+FlatMap:
+Arrays.stream(new int[]{1, 2, 3}).flatmap( x -> Stream.of(x*x, x*x*x))
+Given a stream of numbers, we create two new streams of its squares and cubes.
+
+Another way to think:
+Map applies a function to transform the stream.
+FlatMap applies a function to transform the stream, then flatten it.
+
+A structure like [ [1,2,3],[4,5,6],[7,8,9] ] which has "two levels".
+Flattening here means transforming it to a "one level" structure : [ 1,2,3,4,5,6,7,8,9 ]

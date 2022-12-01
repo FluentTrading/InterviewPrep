@@ -1,0 +1,13 @@
+Method references are a special type of lambda expressions.
+They're often used to create simple lambda expressions by referencing existing methods.
+
+There are four kinds of method references:
+
+1. Static methods
+list.forEach(  x -> System.out.println(x) )
+can be changed to
+list.forEach( System.out::println )
+
+2. Instance method
+
+3. Constructor

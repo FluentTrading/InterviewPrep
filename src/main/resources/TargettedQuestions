@@ -1,0 +1,50 @@
+
+- HashMap, HashSet (conflict handle after Java8)
+- Volatile, what problem is volatile trying to solve.
+- AtomicInt/Long/Double how to use to solve concurrency problem
+- ComputeIfAbsent how does it work
+- 100T int data distributed on 10 machines, how to find the median number among them
+
+Map
+========================================================================================================================
+
+
+Multicast market data
+========================================================================================================================
+In Multicast a server only needs to send each packet once and will reach all of the recipients.
+It’s useful for situations where a large number of receivers need to receive the same data.
+Since the replication and distribution of these packets is done by the network switches/routees rather than the server.
+
+But because the multicast is one-way, any responses would need to be implemented using a separate protocol.
+Also dropped packets must either be unimportant, or the recovery mechanisms for lost data must be built separately.
+
+
+
+Websocket vs TCP socket:
+========================================================================================================================
+WebSocket is an application protocol (on the OSI model) which makes use of TCP as transport layer.
+Tcp works well within an intranet where you can control over machines and can open ports for connections.
+Over the internet, you are in no such luck. You peer will have only a few standard ones open (80 for HTTP/443 for HTTPS).
+So, to communicate with the server you are obliged to connect using one of those ports.
+Web sockets is to allow you to initiate a connection via HTTP, but then negotiate to use the web sockets protocol to allow a more "TCP socket"-like communication stream.
+
+
+
+How to read input from Scanner
+========================================================================================================================
+Scanner console = new Scanner(System.in);
+while( console.hasNext() ){
+    String line = console.nextLine();
+}
+
+
+Stock Max Profit with not doing anything:
+Assuming that the price change of a certain stock at T time points in the future is (P1, P2, P3, ..., PT) each time we either
+1) buy 1 share,
+2) sell n shares, n is less than or equal to the position
+3) Do nothing.
+
+Calculate the optimal profit. I have passed all the test cases directly by iteration, so there is no space requirement for the topic, just remember to use a hash table.
+
+
+- How to parse date (1/10/2020) and time (16:00:00) from a log and how would we store it?

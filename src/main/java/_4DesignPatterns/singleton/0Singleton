@@ -1,0 +1,26 @@
+
+//Benefits:
+Thread-safe, JVM insures only one instance is created, inherently serializable, can't break singleton via reflection.
+
+//NOTE:
+//Class will be initialized when INSTANCE is first accessed.
+
+enum Singleton{
+
+  INSTANCE;
+
+  private final Connection connection;
+
+  private Singleton(){
+    connection = DB.getConnection();
+  }
+
+  public static Singleton getInstance(){
+    return INSTANCE;
+  }
+
+  public Connection getConnection(){
+    return connection;
+  }
+
+}

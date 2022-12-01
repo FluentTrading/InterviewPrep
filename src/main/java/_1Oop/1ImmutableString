@@ -1,0 +1,28 @@
+Why are java immutable in java.
+
+Strings are stored in "String Pool" which resides in on the regular java heap (previously it used to be in a separate are in perm space).
+When we declare, String name = "Vic"; String "Vic" resides in memory and name refers to it.
+If we change name = "Not Vic", The reference name now points to another string "Not Vic". However "Vic" still remains unchanged in memory.
+
+Performance:
+Since strings are immutable, the JVM can optimize the amount of memory allocated for them by storing only one copy of each literal String in the pool.
+This process is called interning.
+
+NOTE: this only works if you create string without using the "new" keyword.
+String name  = "test"
+
+If you use the new keyword, the string is created on the heap (and not in string pool, therefore won't be interned).
+String name = new String("Vic")
+
+NOTE: you can manually intern a string created via new.
+String name = new String("Not Interned");
+String internedName = name.intern();
+
+Synchronization:
+Immutable Strings are thread-safe from get it.
+
+Security:
+String is widely used as parameters for e.g opening network connection, you can pass string as Host.
+For reading file in java you can pass path of files and directory as String and for opening Database Connection, you can pass DB URL as string.
+If String were mutable, a user might after having granted access a particular file, but after authentication he can change path of file.
+It could cause serious security issues.

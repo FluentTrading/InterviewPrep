@@ -1,0 +1,44 @@
+Streams bring functional programming to java. The streams pipeline begin with a source, followed by 0 or more intermediate operations and ends with 1 terminal operation.
+Note, once processed, streams can't be reused.
+
+Source: 
+Data source like arrays, lists, sets, ints, longs etc
+
+Intermediate Operations:
+0 or more like filter, map, skip, sort etc. These intermediate operations return a stream which can be chained. Also, order matters, so better to filter then to sort ...
+
+Terminal Operation:
+Only 1 terminal operation which either returns a void or a non-stream result. E.g foreach, Collect, Reduce (like count(), max(), min(), reduce(), summaryStatistics()).
+
+Map: 
+Given a stream, returns a new stream in which a given operation is applied to each elements in the original stream. 
+
+Arrays.stream(new int[]{1, 2, 3}).map( x -> x *x).average();
+Here given a stream of numbers, we create a new stream of its squares and then compute its average.
+
+FlatMap:
+Given a stream, returns a new stream in which multiple operations is applied to each elements in the original stream. 
+
+Arrays.stream(new int[]{1, 2, 3})
+.flatmap( x -> Stream.of(x*x, x*x*x)).average();
+Here given a stream of numbers, we create two new streams of its squares and cubes and then compute its average.
+
+Map and FlatMap both transform an input Stream<T> to an output Stream<R>.
+Map produces 1 output for each input value,
+FlatMap can produce 0 or more values for each input value
+
+Another way to think:
+FlatMap is a combo of map and flat, you first apply a function to map and then flatten it.
+Stream.map only applies a function to transform the stream without flattening the stream.
+
+Consider a structure like [ [1,2,3],[4,5,6],[7,8,9] ] which has "two levels".
+Flattening this means transforming it in a "one level" structure : [ 1,2,3,4,5,6,7,8,9 ]
+
+
+NOTE:
+Streams are lazy because intermediate operations are not evaluated until terminal operation is invoked.
+Each intermediate operation creates a new stream, stores the provided operation and return the new stream.
+The pipeline accumulates these newly created streams.
+The time when terminal operation is called, traversal of streams begins and the associated function is performed one by one.
+
+Parallel streams don't evaluate streams 'one by one' (at terminal point). The operations are rather performed simultaneously, depending on the available cores.

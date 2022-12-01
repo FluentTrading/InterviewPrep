@@ -1,0 +1,56 @@
+Record:
+
+
+public final class Vehicle(String brand, String licensePlate){
+    private final String brand;
+    private final String licensePlate;
+
+    public Vehicle(String brand, String licensePlate){
+        this.brand = brand;
+        this.licensePlate = licensePlate;
+    }
+
+    public final String getBrand(){
+        return brand;
+    }
+
+    public final String getLicensePlate(){
+        return licensePlate;
+    }
+
+    public String toString(){}
+    public int hashcode(){}
+    public boolean equals(){}
+
+}
+
+Can be changed to:
+public record Vehicle(String brand, String licensePlate){}
+
+Notice how the record defined in the example has no explicit Java field definitions.
+The two parameters defined in the constructor tells the Java compiler that the record type has two fields.
+The Java compiler then generates the corresponding fields, getter methods and a hashCode() and equals() method.
+Also, a record type definition is final, meaning you cannot create subclasses of a Java Record type.
+
+You can implement interface, add extra constructors, other instance and static methods to records.
+
+
+public record Vehicle(String brand, String licensePlate) implements SomeInterface{
+
+  //Second constructor
+  public Vehicle( String brand ){
+    this( brand, null );
+  }
+
+  //Instance Method
+  public String brandAsLowerCase( ){
+    //Notice the call to auto-generated brand().
+    return brand().toLowerCase();
+  }
+
+  //Static method
+  public static String brandAsUpperCase( Vehicle vehicle ){
+    return vehicle.brand.toUpperCase();
+  }
+
+}

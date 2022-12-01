@@ -1,0 +1,19 @@
+Methods in an interface which can be overridden in a subclass.
+Static methods can be declared but not overridden.
+
+public interface Vehicle{
+    default String init(){ return "Vehicle innit."; }
+    static String initStatic(){ return "Static vehicle innit."; }
+}
+
+public class Car implements Vehicle {
+   String init(){ return "Car innit."; }
+}
+
+ public static void main(String args[]){
+       Vehicle veh = new Car();
+        veh.init();                   //Works
+        Vehicle.initStatic();  //Works
+        veh.initStatic();         //This wont compile
+    }
+}

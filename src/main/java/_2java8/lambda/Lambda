@@ -1,0 +1,42 @@
+A lambda expression is an anonymous function (function without a class). But Java is strongly typed, so what's the type of a Lambda expression? The type is "functional interface".
+
+What is a functional interface?
+1. It is an interface.
+2. Has 1 abstract method (Can have default/static methods)
+3. Has @FunctionalInterface annotation
+
+Few  functional interfaces in java.util.Function package
+----------------------------------------------------------------------------------------
+1. interface Predicate<T>
+    boolean test( T arg );
+
+Takes an input and returns a boolean. Used to filter or check conditions. Can be chained via and, or, negate etc
+
+2. interface Supplier<T>
+    T get();
+
+Produces an object without taking any inputs.
+
+3. interface  Consumer<T>
+    void accept( T arg );
+
+Takes an input but doesn't return anything. For example, take in a list of items and print/log them.
+
+4. interface Function<T, R>
+    R apply( T arg );
+
+Takes an argument and returns an output.
+Function also has sub-class like UnaryOperator & BinaryOperator which take/produce multiple inputs/outputs.
+
+
+Lambda Syntax
+--------------------------------------------------------------------------------------------------
+(parameterList -> statement )
+For example:
+(int x, int y) -> {return x+y;}
+
+Note for one expression body, the return keyword & curly braces may be omitted. Also the result is implicitly returned.
+(x, y) -> x+y
+
+Lambda with empty parameter list looks like this:
+() -> System.out.println("Hello lambda!")

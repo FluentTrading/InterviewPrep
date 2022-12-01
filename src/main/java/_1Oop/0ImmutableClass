@@ -1,0 +1,16 @@
+An object is immutable if all of the following are true:
+
+1. It's state cannot be modified after construction.
+2. All its fields are final.
+3. The "this" reference doesn't escape during construction.
+4. The class itself should be declared final so fields cannot be overridden by sub-classes.
+5. Deep copy any mutable fields that are passed in the constructor.
+
+Benefits:
+1. Thread safe by default.
+2. The object’s hash code can be cached.
+3. Since its state won’t change, the same object can be used at multiple places to save memory.
+4. Good choice for keys for Maps.
+
+Examples:
+String, Integer, Float, Boolean ...

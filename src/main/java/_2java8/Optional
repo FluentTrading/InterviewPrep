@@ -1,0 +1,33 @@
+Wrapper class for objects which may be null.
+
+1) Optional<User> userOp = Optional.empty()
+Creates an empty optional, user.isEmpty() returns true.
+
+2) Optional<User> userOp = Optional.of(user)
+Only use when user != null. Client can retrieve with user.get()
+
+3) Optional<User> userOp = Optional.ofNullable(user);
+Use when user could be null.
+
+4) Ways of checking the optional object.
+ - userOp.isPresent() true if user is not null.
+-  userOp.ifPresent( v -> {} ) executes a consumer function if user 1= null. Does nothing if null.
+-  userOp.get()
+Get a value if present else throws NoSuchElementException
+Only use get() directly if you are certain that user != null
+- userOp.orElse( new User("") ) returns a default value if null.
+- userOp.orElseGet( () -> { return new User("Unknown"))} );
+Takes a supplier which is invoked if the Optional is empty.
+
+5) userOp.filter( u -> u.getGender().equals("MALE"))
+.ifPresent(() -> {
+    //Logic for male users
+})
+Filter takes a predicate and executes if the value != null & matches the given predicate. Otherwise it returns an empty Optional.
+
+6) userOp.map(User::getAddress)
+.filter(address -> address.getCountry().equals("India"))
+.ifPresent(() -> { System.out.println("User from India"); });
+Extract User's address using map() method. filter address from India and print.
+
+https://www.callicoder.com/java-8-optional-tutorial/
