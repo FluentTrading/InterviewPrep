@@ -1,7 +1,7 @@
 package com.interview.linkedlist;
 
 import java.util.*;
-import util.ListNode;
+import com.interview.util.ListNode;
 
 public class ReorderList {
 

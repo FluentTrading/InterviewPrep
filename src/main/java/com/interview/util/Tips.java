@@ -1,4 +1,4 @@
-package util;
+package com.interview.util;
 
 import java.util.Arrays;
 import java.util.*;

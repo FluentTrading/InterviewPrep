@@ -1,4 +1,4 @@
-package util;
+package com.interview.util;
 
 public enum Type {
 

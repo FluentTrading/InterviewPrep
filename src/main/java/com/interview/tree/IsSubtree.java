@@ -1,6 +1,6 @@
 package com.interview.tree;
 
-import util.TreeNode;
+import com.interview.util.TreeNode;
 
 public class IsSubtree {
 

@@ -1,6 +1,6 @@
 package com.interview.linkedlist;
 
-import util.ListNode;
+import com.interview.util.ListNode;
 
 public class IntersectionOfTwoLists {
 

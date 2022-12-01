@@ -1,6 +1,6 @@
 package com.interview.tree;
 
-import util.TreeNode;
+import com.interview.util.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

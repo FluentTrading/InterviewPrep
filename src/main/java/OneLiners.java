@@ -1,8 +1,10 @@
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class OneLiners {
 
@@ -40,6 +42,14 @@ public class OneLiners {
         Arrays.stream(array).forEach(a -> Arrays.fill(a, value));
     }
 
+    public void removeFromCollection() {
+        List<Integer> list = new ArrayList<>( List.of(10, 5, 20, 30, 40));
+        System.out.println("Original list: " + list );
+        list.removeIf(val -> (val > 15) );
+        System.out.println( "After removal (val >15): "+ list);
+    }
+
+
     private String printWithDelimiter( List<String> inputList ){
         return String.join("->", inputList);
     }
@@ -58,4 +68,26 @@ public class OneLiners {
         }
     }
 
+    public static void bigDecimalForCurrency( ){
+        int scale = 4;
+        double value = 0.11111;
+        BigDecimal tempBig = new BigDecimal(Double.toString(value) ).setScale(scale, BigDecimal.ROUND_HALF_EVEN);
+        String strValue = tempBig.stripTrailingZeros().toPlainString();
+        System.out.println("Value = " + strValue);
+    }
+
+
+    public static void swapTwoNumbers( int one, int sec){
+        System.out.println("First: " + one + ", Second: " + sec );
+        //No overflow
+        one ^= sec;
+        sec ^= one;
+        one ^= sec;
+        System.out.println("Swapped: First: " + one + ", Second: " + sec );
+    }
+
+    public static void main(String[] args) {
+        OneLiners one = new OneLiners();
+        one.swapTwoNumbers(10, 17);
+    }
 }

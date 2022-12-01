@@ -1,0 +1,91 @@
+1) There are 4 major principles of OOP.
+------------------------------------------------------------------------------------------------------------------------
+Encapsulation       - Mechanism of hiding of data implementation by restricting access to public methods.
+Data Abstraction    - Using abstract class/Interface we express the intent of the class rather than the actual implementation.
+                      By referring to a class by it interface/abstract class we hide it's implementation.
+Inheritance         - Expresses a "is a" relationship. Derived classes can reuse the code of existing super classes.
+Polymorphism        - Static polymorphism is method overloading (one class has multiple methods of same name).
+                      Dynamic is method overriding where a subclass can override the implementation of a super class.
+
+
+2) Why use prime numbers in hashcode calculation?
+------------------------------------------------------------------------------------------------------------------------
+int hashcode = 0
+for( char c : word.toCharArray()){
+    hashcode = 31 * (hashcode + ch);
+}
+
+Prime numbers have no other factors (besides itself and 1) The product of a prime number and any other number has a
+good chance of being unique (although not as unique as the prime number itself as it was used to compose the number).
+This property makes it useful to get a fair distribution of hashcode and therefore avoid collisions as much as possible.
+
+How is the heap space divided in Java?
+------------------------------------------------------------------------------------------------------------------------
+Memory taken up by the JVM is divided into Stack, Heap and Non Heap memory areas.
+Stacks (2MB in size) are taken up by individual threads for running the method code while heap is used to hold all
+objects created using new operation.
+
+Java HotSpot VM Heap Memory is divided into Generations:
+Young   (Heap)          - This further consists of one Eden Space and two survivor spaces.
+The VM initially assigns all objects to Eden space, and most objects die there.
+When VM performs a minor GC, it moves any remaining objects from the Eden space to one of the survivor spaces.
+
+Tenured/Old (Heap)      - VM moves objects that live long enough in the survivor spaces to the "tenured" space in the old generation.
+Also, a new object can be allocated here if it too big to fit in the young generation.
+When the tenured generation fills up, there is a full GC that is often much slower because it involves all live objects.
+
+Metaspace   (Non-Heap)  - The metaspace holds all the reflective data of the virtual machine itself,
+such as class metadata, classloader related data. Garbage collection of the dead classes and classloaders is triggered
+once the class metadata usage reaches the “MaxMetaspaceSize”.
+
+Code Cache (Non-heap)   - Contains memory that is used for compilation and storage of native code.
+
+Does GC collects memory from Perm Gen Space?
+------------------------------------------------------------------------------------------------------------------------
+The PermGen space is gced like the other parts of the heap. PermGen contains meta-data of classes and objects
+(pointers to heap memory allocation). It also includes classLoaders that need to be manually destroyed at the end of their use.
+
+
+ConcurrentHashMap
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+Some new methods:
+putIfAbsent             - The entire method invocation is performed atomically.
+compute                 - The entire method invocation is performed atomically.
+computeIfAbsent         - The entire method invocation is performed atomically.
+computeIfPresent        - The entire method invocation is performed atomically.
+search (key, value)     -
+reduce (key, value)     -
+forEachAll              -
+
+for example• The below statement will conditionally create a new LongAdder() objects if none existed against the given word and then increment the counter by One.map.putIfAbsent(word, new LongAdder());map.get(word).increment();• The blow statement will print the entire key-value pair from the Hashmap (threshold is parallelism threshold number beyond which multiple threads will execute the given operation)map.forEach(threshold, (k, v) -> System.out.println(k + "->" + v));• The below code snippet will increment the counter by one initializing to one if it is nullmap.compute(word, (k, v) -> v == null ? 1: v+1);• The below statement is another way of doing the same thingmap.computeIfAbsent(word, k -> new LongAdder()).increment();• The below code snippet will search for the first match where value is greater than 100, returning null if nothing foundString result = map.search(threshold, (k, v) -> v > 100 ? k : null) ;
+
+
+
+Completable Future:
+------------------------------------------------------------------------------------------------------------------------
+Future<T> denotes a value of type T that will be available in the future.
+
+Let's say we want to read a web page and then extract all links from it.
+- Future<String> readPage(URL webpageUrl) {..}  //Reads the web page
+- List<URL> getLinks(String page)               //Get links from the web page
+
+How can we chain the above two methods?
+The call to future.get() is a blocking call. We are really no better off than with a method public String readPage(URL url) that blocks until the result is available.
+There was no easy way of saying: “When the result becomes available, here is how to process it.”
+
+This is the crucial feature that CompletableFuture provides.
+Unlike a plain Future, a CompleteableFuture has a method thenApply to which you can pass the post-processing function.
+CompleteableFuture.supplyAynsc( () -> blockingRead(url) ).thenApply( Parser::getLinks )
+
+
+There are 1 billion cell-phone numbers each having 10 digits, all of them stored randomly in a file.
+------------------------------------------------------------------------------------------------------------------------
+How would you check if there exists any duplicate if only 10 MB RAM is available to the system.
+
+1) Hash all these numbers into 1000 files using hash(num)%1000.
+Then the duplicates should fall into the same file.
+Each file will contain 1 million numbers roughly, then for each file use HashSet to check for the duplicates.
+
