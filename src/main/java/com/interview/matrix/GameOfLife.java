@@ -29,7 +29,6 @@ public class GameOfLife {
 
         }
 
-
         for( int rIndx = 0; rIndx < board.length; rIndx++ ){
             for( int cIndx = 0; cIndx < board[0].length; cIndx++ ){
                 board[rIndx][cIndx] = output[rIndx][cIndx];
@@ -41,8 +40,8 @@ public class GameOfLife {
 
     private int getNeighborCount( int rIndx, int cIndx, int[][] board ){
 
-        int count=0;
-        //To find value in 8 Direction left,right,top,down,top left ,top right,bottom left, bottom right
+        int count = 0;
+        //To find value in 8 directions: left, right, top, down, top left ,top right, bottom left, bottom right
         int[][] directions ={ {0,-1},{0,1},{1,0},{1,-1},{1,1},{-1,-1},{-1,1},{-1,0} };
 
         for( int[] dir : directions ){
@@ -52,7 +51,6 @@ public class GameOfLife {
             if( row>=0 && row<board.length && col >=0 && col<board[0].length ){
                 count += board[row][col];
             }
-
         }
 
         return count;

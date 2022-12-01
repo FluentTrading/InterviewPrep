@@ -5,7 +5,6 @@ import java.util.*;
 public class TaskMaster {
 
     static class Task {
-
         int taskNum;
         private boolean visited;
         private List<Task> dependency = new ArrayList<>();
@@ -18,8 +17,8 @@ public class TaskMaster {
             dependency.add(dTask);
         }
 
-        boolean isCyclic() {
-            if( visited ) {
+        boolean isCyclic(){
+            if( visited ){
                 return true;
             }
             visited = true;

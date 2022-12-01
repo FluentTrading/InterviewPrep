@@ -15,7 +15,7 @@ public class MeetingRooms {
 
         for( int i=1; i<intervals.length; i++ ){
             int[] next = intervals[i];
-            //Next starts after ther first one ends
+            //Next starts after the first one ends
             if( next[0] >= first[1] ){
                 first = next;
             }else{

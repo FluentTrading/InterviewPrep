@@ -3,7 +3,6 @@ package com.interview.tree;
 import com.interview.util.TreeNode;
 
 public class MaxPathSum {
-
     int maxPathSum = Integer.MIN_VALUE;
 
     public int maxPathSum( TreeNode root ){

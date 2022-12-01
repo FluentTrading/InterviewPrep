@@ -16,28 +16,32 @@ public class BinaryTreeFromPreorderAndInorderTraversal {
   }
 
 
-    private int in = 0;
-    private int pre = 0;
+    private int inorderIndx = 0;
+    private int preorderIndx = 0;
+
+    //Inorder   : left, root, right
+    //Preorder  : root, left, right
+    //Postorder : left, right, root
 
     public MyTreeNode buildTree( int[] preorder, int[] inorder ){
         return build( preorder, inorder, Integer.MIN_VALUE );
     }
 
     private MyTreeNode build( int[] preorder, int[] inorder, int stop ){
-        if( pre >= preorder.length ){
+        if( preorderIndx >= preorder.length ){
             return null;
         }
 
-        if( inorder[in] == stop ){
-            in++;
+        if( inorder[inorderIndx] == stop ){
+            inorderIndx++;
             return null;
         }
 
-        MyTreeNode node = new MyTreeNode(preorder[pre++]);
-        node.left = build(preorder, inorder, node.val);
-        node.right = build(preorder, inorder, stop);
+        MyTreeNode root = new MyTreeNode(preorder[preorderIndx++]);
+        root.left = build(preorder, inorder, root.val);
+        root.right = build(preorder, inorder, stop);
 
-        return node;
+        return root;
 
     }
 

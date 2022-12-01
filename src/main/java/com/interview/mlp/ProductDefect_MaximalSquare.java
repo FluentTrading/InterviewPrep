@@ -17,7 +17,6 @@ public class ProductDefect_MaximalSquare {
      *  - If the min value is 1, then we know that all values in these directions were 1! Our matrix can expand, we add 1 to it and store in dpTable
      *  - If the min value is 0, then there is a 0 in one of these directions, we can't expand.
      */
-
     public int maximalSquare( char[][] matrix ){
 
         int maxLength = 0;
@@ -34,6 +33,7 @@ public class ProductDefect_MaximalSquare {
                     int left = dpTable[rowIndx][colIndx-1];
                     int diag = dpTable[rowIndx-1][colIndx-1];
 
+                    //1 gets added as the value here is already 1. Need to carry that over.
                     dpTable[rowIndx][colIndx] = 1 + Math.min( above, Math.min(left, diag) );
                     maxLength = Math.max(maxLength, dpTable[rowIndx][colIndx]);
                 }

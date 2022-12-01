@@ -2,7 +2,6 @@ package com.interview.mlp;
 
 public class ClimbStairs_DecodeWays_UniquePaths {
 
-
     //Can climb either 1 step or 2 steps at a time.
     //How many ways to climb n steps
     public int climbStairs( int n ){
@@ -45,7 +44,12 @@ public class ClimbStairs_DecodeWays_UniquePaths {
 
     }
 
-
+    /**
+     * There is a robot on an m x n grid initially [0][0].
+     * It tries to move to the bottom-right corner [m - 1][n - 1] but can only move either down or right at any point in time.
+     *
+     * Given the two integers m and n, return the number of possible unique paths that the robot can take to reach the bottom-right corner.
+     */
     public int uniquePaths( int m, int n ){
         int[][] grid = new int[m][n];
 

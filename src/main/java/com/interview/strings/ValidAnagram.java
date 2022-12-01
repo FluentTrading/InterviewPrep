@@ -29,30 +29,6 @@ public class ValidAnagram {
     }
 
 
-
-    //Fun with Anagrams
-    public static String[] removeAnagrams( String[] words ){
-
-        List<String> result = new ArrayList<>();
-        Set<String> found = new HashSet<>();
-
-        for( String word : words ){
-            char[] tempArray = word.toCharArray();
-            Arrays.sort(tempArray);
-            String sortedWord = String.valueOf(tempArray);
-
-            if( !found.contains(sortedWord) ){
-                result.add(word);
-                found.add(sortedWord);
-            }
-        }
-
-        Collections.sort(result);
-
-        return result.toArray( new String[result.size()]);
-    }
-
-
     //Group using frequency array as Key
     public List<List<String>> groupAnagrams( String[] strs ){
         Map<int[], List<String>> map = new HashMap<>();

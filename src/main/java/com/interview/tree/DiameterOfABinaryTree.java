@@ -5,7 +5,6 @@ import com.interview.util.TreeNode;
 public class DiameterOfABinaryTree {
 
     //For every node, length of the diameter through it is the MaxDepth of its left subtree + MaxDepth of its right subtree.
-
     int maxDiameter = 0;
 
     public int diameterOfBinaryTree( TreeNode root ){

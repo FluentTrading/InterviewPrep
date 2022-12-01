@@ -53,8 +53,7 @@ public class GraphValidTree {
         }
 
         //There can only be 1 connected component for it to be a valid tree
-        return (uf.count == 1);
-
+        return ( uf.count == 1 );
     }
 
 

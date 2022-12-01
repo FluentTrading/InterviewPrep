@@ -3,8 +3,7 @@ package com.interview.matrix;
 
 public class FloodFill{
 
-
-    public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+    public int[][] floodFill( int[][] image, int sr, int sc, int newColor ){
         if( image[sr][sc] == newColor ) return image;
 
         fill(image, sr, sc, image[sr][sc], newColor);

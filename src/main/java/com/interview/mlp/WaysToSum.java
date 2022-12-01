@@ -6,8 +6,7 @@ import java.util.List;
 
 public class WaysToSum {
 
-
-    public List<List<Integer>> combinationSum(int k, int target ){
+    public List<List<Integer>> combinationSum( int k, int target ){
         int[] nums = new int[k];
         for( int i=1; i<=k; i++ ){
             nums[i-1] = i;

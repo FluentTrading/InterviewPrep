@@ -4,9 +4,11 @@ import com.interview.util.TreeNode;
 
 public class IsSubtree {
 
+    /**
+     * Return true if there is a subtree within root with the same structure and node values of subRoot and false otherwise.
+     */
 
-    //Return true if there is a subtree within root with the same structure and node values of subRoot and false otherwise.
-    public boolean isSubtree(TreeNode root, TreeNode subRoot ){
+    public boolean isSubtree( TreeNode root, TreeNode subRoot ){
         if( root == null ) return false;
 
         //Are the trees the same starting from here?

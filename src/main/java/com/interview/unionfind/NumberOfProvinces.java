@@ -6,7 +6,6 @@ public class NumberOfProvinces {
     private static class UF {
         private int[] parents;
         private int count;
-
         public UF( int n ){
             this.count = n;
             this.parents = new int[ n ];
@@ -27,7 +26,6 @@ public class NumberOfProvinces {
             }
         }
 
-
         //Find the parent of the given edge
         public int find( int edge ){
             //If the index == value then we found the parent
@@ -39,8 +37,6 @@ public class NumberOfProvinces {
         }
 
     }
-
-
 
     public int findCircleNum( int[][] matrix  ){
 

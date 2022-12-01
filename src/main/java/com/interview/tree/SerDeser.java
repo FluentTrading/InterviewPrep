@@ -22,7 +22,6 @@ public class SerDeser {
         return builder;
     }
 
-
     public TreeNode deserialize( String data ){
         String[] dataArr = data.split(DELIMITER);
         Deque<String> list = new ArrayDeque<>();

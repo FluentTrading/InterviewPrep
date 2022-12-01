@@ -2,7 +2,6 @@ package com.interview.matrix;
 
 public class IslandCount {
 
-
     public int numIslands( char[][] grid ){
         int count = 0;
 
@@ -37,7 +36,6 @@ public class IslandCount {
         scanIsland( grid, row+1, col );
         scanIsland( grid, row, col+1 );
         scanIsland( grid, row, col-1 );
-
     }
 
 

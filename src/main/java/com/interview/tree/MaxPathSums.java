@@ -9,6 +9,12 @@ import java.util.List;
 
 public class MaxPathSums {
 
+    /**
+     * Given the root of a binary tree and a targetSum,
+     * return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.
+     *
+     * This solutions gets all the numbers in every path.
+     */
     public List<List<Integer>> pathSum( TreeNode root, int targetSum ){
         List<List<Integer>> result = new ArrayList<>();
         computePathSums( root, targetSum, new ArrayDeque<>(), result );

@@ -1,11 +1,8 @@
 package com.interview.stack;
 
-
 import java.util.Stack;
 
-
 public class ValidParanthesis {
-
 
     public boolean isValid( String s ){
 
@@ -24,12 +21,11 @@ public class ValidParanthesis {
                 stack.push( ']');
 
             }else{
-                //False is there is nothing to match
                 if( stack.isEmpty() ){
                     return false;
                 }else{
-                    //Take out the potential closing bracket from the stack and match
-                    if( stack.pop() != c ){
+                    //This must be a closing bracket and it must match the closing bracket from the stack
+                    if( c != stack.pop() ){
                         return false;
                     }
                 }

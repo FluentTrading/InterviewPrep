@@ -1,51 +1,32 @@
 package com.interview.strings;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
+import java.util.*;
 
 //Combination = Order doesn't matter
 //Permutation = Order does matter
 
 public class LetterCombinationPhone {
 
-    public static List<String> letterCombination( String digits){
+    //For each digit added, remove and copy every element in the queue and add the possible letter to each element,
+    //then add the updated elements back into queue again.
+    //Repeat this procedure until all the digits are iterated.
+    public static List<String> letterCombination( String digits ) {
+        if( digits == null || digits.isBlank() ) return Collections.emptyList();
 
-        Map<Character, String> phoneMap = Map.of(
-                '2', "abc",
-                '3', "def",
-                '4', "ghi",
-                '5', "jkl",
-                '6', "mno",
-                '7', "pqrs",
-                '8', "tuv",
-                '9', "wxyz");
+        String[] mapping = new String[]{"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
-        StringBuilder builder = new StringBuilder();
+        LinkedList<String> result = new LinkedList<>();
+        result.add("");
 
-        for( char digit : digits.toCharArray() ){
-            String combo = phoneMap.get(digit);
-            if( combo != null ){
-                builder.append(combo);
+        while( result.peek().length() != digits.length() ){
+            String remove = result.remove();
+            String map = mapping[digits.charAt(remove.length()) - '0'];
+            for( char c : map.toCharArray() ){
+                result.addLast(remove + c);
             }
         }
 
-        String combos = builder.toString();
-        System.out.println( combos );
-        List<String> result = new ArrayList<>();
-        for( int i=0; i<combos.length(); i++ ) {
-            performCombination(i, combos, new ArrayList<>(), result);
-        }
-
         return result;
-    }
-
-
-    public static void performCombination( int index, String remainingDigits, List<String> current, List<String> result ){
-
-        //Base case
-
     }
 
 

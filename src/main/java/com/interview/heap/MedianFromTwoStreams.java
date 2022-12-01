@@ -5,10 +5,11 @@ import java.util.*;
 public class MedianFromTwoStreams {
 
     //Keep two heaps, min and max
-    //a) First num, add o min and then rebalance to max
-    //b) Then, add to max and rebalance to min
+    //a) First num, add to minHeap and then rebalance to maxHeap
+    //b) Then, add to maxHeap and rebalance to minHeap
+    //c) Keep alternating
 
-    // This is to keep the heaps balanced so that the median is either
+    // This keeps the heaps balanced so that the median is either
     //a) For even number of inputs, the avg of the top two values in the heaps
     //b) For odd number of inputs, the top max values.
 
@@ -32,6 +33,7 @@ public class MedianFromTwoStreams {
     public double findMedian() {
         boolean evenNumberOfInputs = ((minHeap.size() + maxHeap.size()) %2 == 0);
         if( evenNumberOfInputs ){
+            //Average of two top values
             return (maxHeap.peek() + minHeap.peek()) / 2.0;
         }else{
             return maxHeap.peek();
