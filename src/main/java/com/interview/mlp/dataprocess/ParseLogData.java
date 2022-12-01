@@ -1,4 +1,4 @@
-package com.interview.mlp;
+package com.interview.mlp.dataprocess;
 
 public class ParseLogData {
 

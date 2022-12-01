@@ -5,6 +5,8 @@ import java.util.Arrays;
 public class _14MeetingRooms {
 
 
+    //Given an array of meeting time intervals where intervals[i] = [starti, endi], determine if a person could attend all meetings.
+
     //Runtime: O(N log N)
     public boolean canAttendMeetings( int[][] intervals ){
         if( intervals == null || intervals.length == 0 ){

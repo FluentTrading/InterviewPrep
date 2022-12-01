@@ -40,6 +40,10 @@ public class OneLiners {
         Arrays.stream(array).forEach(a -> Arrays.fill(a, value));
     }
 
+    private String printWithDelimiter( List<String> inputList ){
+        return String.join("->", inputList);
+    }
+
     //Chunk array of size k
     public static void chunkArray( int k, int[] nums ){
         for( int i=0; i<nums.length; i++ ){

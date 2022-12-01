@@ -1,10 +1,10 @@
 package _4DesignPatterns.singleton;
 
-public class _0DBConnection {
+public class DemoDBConnection {
 
     private final String dbUrl;
 
-    public _0DBConnection( String dbUrl ){
+    public DemoDBConnection(String dbUrl ){
         this.dbUrl = dbUrl;
         System.out.println("_0DBConnection const called.");
     }

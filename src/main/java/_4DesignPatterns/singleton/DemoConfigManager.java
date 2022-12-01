@@ -1,6 +1,6 @@
 package _4DesignPatterns.singleton;
 
-public class _0ConfigManager {
+public class DemoConfigManager {
 
     public static String getDBUrl( ){
         return "DbUrl";
