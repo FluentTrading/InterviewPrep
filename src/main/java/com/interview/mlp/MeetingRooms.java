@@ -2,7 +2,7 @@ package com.interview.mlp;
 
 import java.util.Arrays;
 
-public class _14MeetingRooms {
+public class MeetingRooms {
 
 
     //Given an array of meeting time intervals where intervals[i] = [starti, endi], determine if a person could attend all meetings.

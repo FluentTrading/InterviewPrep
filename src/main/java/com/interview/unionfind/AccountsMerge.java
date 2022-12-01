@@ -63,62 +63,55 @@ public class AccountsMerge {
      * mailToIndex: one to one mapping: mail string to its parent index mapping
      * disjointSet: one to many mapping: parent index to all emails that belong to same group mapping
      * */
-    public List<List<String>> accountsMerge( List<List<String>> accounts ){
+    /**
+     *  "John"   => "johnsmith@mail.com",    "john_newyork@mail.com"
+     *  "John"   => "johnsmith@mail.com",    "john00@mail.com"
+     *  "Mary"   => "mary@mail.com"
+     *  "John"   => "johnnybravo@mail.com"
+     */
 
-        int accountSize = accounts.size();
-        UF uf = new UF(accountSize);
+    public List<List<String>> accountsMerge( List<List<String>> accounts ) {
 
-        // Step 1: traverse all emails except names, if we have not seen an email before, put it with its index into map.
-        // Otherwise, union the email to its parent index.
-        Map<String, Integer> mailToIndex = new HashMap<>();
-        for( int i = 0; i < accountSize; i++ ){
-            for( int j = 1; j < accounts.get(i).size(); j++ ){
+        UF dsu = new UF(accounts.size());
+        Map<String, Integer> emailToNameId = new HashMap<>();
 
-                String curMail = accounts.get(i).get(j);
-                if( mailToIndex.containsKey(curMail) ){
-                    int preIndex = mailToIndex.get(curMail);
-                    uf.union(preIndex, i);
-                }else{
-                    mailToIndex.put(curMail, i);
+        for (int i = 0; i < accounts.size(); i++) {
+            for (int j = 1; j < accounts.get(i).size(); j++) { //j=0 has Name, not email
+
+                String email = accounts.get(i).get(j);
+                int currentNameId = i;
+                if (emailToNameId.containsKey(email)) {
+                    int oldMapNameId = emailToNameId.get(email); // same email with different name or entries
+                    dsu.union(oldMapNameId, currentNameId);
+                } else {
+                    emailToNameId.put(email, currentNameId);
                 }
             }
         }
 
-        // Step 2: traverse every email list, find the parent of current list index and put all emails into the set list
-        // that belongs to key of its parent index
-        Map<Integer, Set<String>> disjointSet = new HashMap<>();
-        for( int i = 0; i < accountSize; i++ ){
-            // find parent index of current list index in parent array
-            int parentIndex = uf.find(i);
-            disjointSet.putIfAbsent(parentIndex, new HashSet<>());
-
-            Set<String> curSet = disjointSet.get(parentIndex);
-            for (int j = 1; j < accounts.get(i).size(); j++) {
-                curSet.add(accounts.get(i).get(j));
-            }
-
-            disjointSet.put(parentIndex, curSet);
+        //johnEmail1 -> 0
+        //johnEmail2 -> 0
+        //marryEmail -> 2
+        //combine these 1&2
+        Map<Integer, TreeSet> idToEmailMap = new HashMap<>();
+        for (int i = 0; i < accounts.size(); i++) {
+            int rootParent = dsu.find(i); //p[0] -> 1
+            List<String> email = accounts.get(i);
+            idToEmailMap.putIfAbsent(rootParent, new TreeSet<>()); // emails of 0 and 1 will come under parent 1
+            idToEmailMap.get(rootParent).addAll(email.subList(1, email.size()));
         }
 
-
-        // step 3: traverse ket set of disjoint set group, retrieve all emails from each parent index, and then SORT
-        // them, as well as adding the name at index 0 of every sublist
-        List<List<String>> result = new ArrayList<>();
-        for( int index : disjointSet.keySet() ){
-            List<String> curList = new ArrayList<>();
-            if( disjointSet.containsKey(index) ){
-                curList.addAll(disjointSet.get(index));
-            }
-
-            Collections.sort(curList);
-            curList.add(0, accounts.get(index).get(0));
-            result.add(curList);
-
+        List<List<String>> res = new LinkedList<>();
+        for (int id : idToEmailMap.keySet()) {
+            String name = accounts.get(id).get(0);
+            List<String> emails = new LinkedList<>(idToEmailMap.get(id));
+            emails.add(0, name);
+            res.add(emails);
         }
 
-        return result;
+        return res;
+
     }
-
 
     public static void main(String[] args) {
         List<List<String>> accounts = new ArrayList<>();

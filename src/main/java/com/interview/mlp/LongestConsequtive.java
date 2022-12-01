@@ -2,7 +2,7 @@ package com.interview.mlp;
 
 import java.util.*;
 
-public class _14LongestConsequtive {
+public class LongestConsequtive {
 
 
     //Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence in O(N)

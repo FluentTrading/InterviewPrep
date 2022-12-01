@@ -2,7 +2,7 @@ package com.interview.mlp;
 
 import java.util.*;
 
-public class _18_TopKFrequent {
+public class TopKFrequent {
 
     public int[] topKFrequent(int[] nums, int k) {
 

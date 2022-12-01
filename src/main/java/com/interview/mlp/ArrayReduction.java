@@ -5,6 +5,11 @@ import java.util.Arrays;
 
 public class ArrayReduction {
 
+    //Array can be reduced by 1 element by performing a move.
+    //A move is:
+    //Pick two diff elements, remove them, add the sum of them to the end of the array
+    //Each move has cost given by sum of the elements removed.
+    //Calculate the total cost of reducing the array to 1 element.
     public static int reduceArray( int[] nums ){
         Arrays.sort(nums);
 

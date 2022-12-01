@@ -3,7 +3,7 @@ package com.interview.mlp;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
-public class _15MeetingRooms2 {
+public class MeetingRooms2 {
 
 
     //Given an array of meeting time intervals intervals where intervals[i] = [starti, endi], return the minimum number of conference rooms required.
