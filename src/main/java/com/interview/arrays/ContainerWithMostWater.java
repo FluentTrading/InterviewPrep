@@ -2,11 +2,14 @@ package com.interview.arrays;
 
 public class ContainerWithMostWater {
 
+    /**
+        You are given an array of heights. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+        Find two lines that together with the x-axis form a container, such that the container contains the most water.
+     */
 
-    //Two pointer
-    //Take height from left and right, advance the index
-    //Calc area using min height
-    //Compare to global max
+    //Two pointer approach:
+    //Take height from left and right, calculate area using min height (as the container is defined by the smaller height)
+    //Keep comparing and updating to global max
     public int maxArea( int[] height ){
 
         int maxArea = 0;
@@ -27,8 +30,8 @@ public class ContainerWithMostWater {
                 minHeight = rightHeight;
             }
 
-            int reactArea =  minHeight * ((rIndx-lIndx) +1);
-            maxArea = Math.max( maxArea, reactArea );
+            int thisArea =  minHeight * ((rIndx-lIndx) +1);
+            maxArea = Math.max( maxArea, thisArea );
         }
 
         return maxArea;

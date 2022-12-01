@@ -9,10 +9,6 @@ public class MeetingRooms {
 
     //Runtime: O(N log N)
     public boolean canAttendMeetings( int[][] intervals ){
-        if( intervals == null || intervals.length == 0 ){
-            return true;
-        }
-
         Arrays.sort( intervals, (x, y) -> (x[0] - y[0]) );
 
         int[] first = intervals[0];

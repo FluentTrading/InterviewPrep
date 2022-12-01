@@ -23,12 +23,12 @@ public class StockBestTimeToBuySell {
     //Can buy and immediately sell it on the same day.
     //We greedily keep adding profits at every interval
     public int maxProfit2( int[] prices ){
-        int currProfit = 0;
+        int maxProfit = 0;
         for( int i=1; i<prices.length; i++ ){
-            currProfit += Math.max( 0,  (prices[i] - prices[i-1]) );
+            maxProfit += Math.max( 0,  (prices[i] - prices[i-1]) );
         }
 
-        return currProfit;
+        return maxProfit;
     }
 
 
@@ -77,29 +77,29 @@ public class StockBestTimeToBuySell {
     public static int getStockMax( int profit, int[] prices ){
         if( prices.length < 2 ) return profit;
 
-        //Step 1: Get Selling price
-        int maxPrice = Integer.MIN_VALUE;
-        int maxPriceIndx = -1;
+        //Step 1: Get max selling price
+        int maxSellingPrice = Integer.MIN_VALUE;
+        int maxSellingPriceIndx = -1;
         for ( int i=0; i<prices.length; i++ ){
-            if( prices[i] > maxPrice ){
-                maxPrice = prices[i];
-                maxPriceIndx = i;
+            if( prices[i] > maxSellingPrice ){
+                maxSellingPrice = prices[i];
+                maxSellingPriceIndx = i;
             }
         }
 
-        //Step 2. Compute profit using this selling price
+        //Step 2. Compute profit by buying every time price is less than the selling price found above
         for ( int i=0; i<prices.length; i++ ){
-            if( i < maxPriceIndx ){
-                profit += (maxPrice - prices[i]);
+            if( i < maxSellingPriceIndx ){
+                profit += (maxSellingPrice - prices[i]);
             }
         }
 
         //Step 3:
-        if( maxPriceIndx == prices.length -1 ){
+        if( maxSellingPriceIndx == prices.length -1 ){
             return profit;
         }else{
             //Case B: [1, 4, 100, 60, 70] = We have profits for 1, 4, 100 BUT we also need to compute profit for 60, 70
-            return getStockMax(profit, Arrays.copyOfRange(prices, maxPriceIndx + 1, prices.length));
+            return getStockMax(profit, Arrays.copyOfRange(prices, maxSellingPriceIndx + 1, prices.length));
         }
     }
 

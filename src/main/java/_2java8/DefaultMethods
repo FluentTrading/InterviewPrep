@@ -1,4 +1,4 @@
-Methods in an interface which can be overridden in a subclass.
+Methods with implementation in an interface which can be overridden in a subclass.
 Static methods can be declared but not overridden.
 
 public interface Vehicle{

@@ -10,7 +10,9 @@ public class StockPriceFluctuation<T>{
 
     /*
     You are given a stream of records about a particular stock. Each record contains a timestamp and the corresponding price of the stock at that timestamp.
-    Unfortunately due to the volatile nature of the stock market, the records do not come in order. Even worse, some records may be incorrect. Another record with the same timestamp may appear later in the stream correcting the price of the previous wrong record.
+    Unfortunately due to the volatile nature of the stock market, the records do not come in order.
+    Even worse, some records may be incorrect.
+    Another record with the same timestamp may appear later in the stream correcting the price of the previous wrong record.
 
     Design an algorithm that:
 
@@ -18,7 +20,7 @@ public class StockPriceFluctuation<T>{
     Finds the latest price of the stock based on the current records. The latest price is the price at the latest timestamp recorded.
     Finds the maximum price the stock has been based on the current records.
     Finds the minimum price the stock has been based on the current records.
-        */
+    */
     private int latestPrice;
     private int latestTimestmap;
     private final Map<Integer, Integer> time2PriceMap;

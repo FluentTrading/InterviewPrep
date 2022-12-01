@@ -28,7 +28,7 @@ public class TwoSum {
 
 
 
-    public List<List<Integer>> threeSum(int[] nums ){
+    public List<List<Integer>> threeSum( int[] nums ){
         if( nums == null || nums.length == 0 ) return Collections.emptyList();
 
         Set<List<Integer>> result = new HashSet<>();

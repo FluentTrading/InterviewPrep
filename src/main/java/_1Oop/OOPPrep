@@ -48,9 +48,6 @@ The PermGen space is gced like the other parts of the heap. PermGen contains met
 
 ConcurrentHashMap
 ------------------------------------------------------------------------------------------------------------------------
-
-
-
 Some new methods:
 putIfAbsent             - The entire method invocation is performed atomically.
 compute                 - The entire method invocation is performed atomically.
