@@ -5,7 +5,6 @@ import com.interview.util.ListNode;
 
 public class SwapNodes {
 
-
     public ListNode swapNodes( ListNode head, int k ){
 
         Map<Integer, Integer> indxToValue = getMap( head );
@@ -20,6 +19,7 @@ public class SwapNodes {
 
             if( count == left ){
                 tmp.setValue(indxToValue.get(right));
+
             }else if( count == right ){
                 tmp.setValue(indxToValue.get(left));
             }

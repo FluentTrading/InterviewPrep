@@ -4,11 +4,11 @@ import com.interview.util.ListNode;
 
 public class AddTwoNumbers {
 
-    public static ListNode addNumbers(ListNode head1, ListNode head2 ){
+    public static ListNode addNumbers( ListNode head1, ListNode head2 ){
 
-        ListNode curr1 = head1;
-        ListNode curr2 = head2;
-        int carry = 0;
+        int carry       = 0;
+        ListNode curr1  = head1;
+        ListNode curr2  = head2;
 
         ListNode result = new ListNode();
         ListNode temp   = result;
@@ -36,8 +36,8 @@ public class AddTwoNumbers {
         }
 
         return result.getNext();
-    }
 
+    }
 
 
     public static void print( ListNode sum ){
@@ -55,7 +55,6 @@ public class AddTwoNumbers {
 
         ListNode sum = addNumbers( one, two );
         print(sum);
-
     }
 
 }

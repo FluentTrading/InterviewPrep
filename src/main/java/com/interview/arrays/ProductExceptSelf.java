@@ -6,7 +6,6 @@ public class ProductExceptSelf {
     //Create two array left and right
     //left has running product of every number < than i (where i is the curr index)
     //right has running product of every number > than i (where i is the curr index)
-
     public int[] productExceptSelf( int[] nums ){
 
         int [] left  = new int[nums.length];

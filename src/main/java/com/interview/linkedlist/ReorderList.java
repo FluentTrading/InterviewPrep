@@ -5,7 +5,6 @@ import com.interview.util.ListNode;
 
 public class ReorderList {
 
-
     //Input: [1] -> [2] -> [3] -> [4]
     //Return [1] -> [4] -> [2] -> [3]
     //Put all the nodes in a list and then pick from front and back

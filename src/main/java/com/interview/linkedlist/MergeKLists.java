@@ -8,7 +8,6 @@ public class MergeKLists {
 
     /*
         Merge these into one sorted list
-
         [
           1->4->5,
           1->3->4,
@@ -32,11 +31,11 @@ public class MergeKLists {
 
         while( !minPQ.isEmpty() ){
 
-            //Poll the first listnode and add it to result
+            //Poll the first node and add it to result
             ListNode curr = minPQ.poll();
             temp.setNext( new ListNode(curr.getValue()));
 
-            //If there are more chains in the listnode then we add it to PQ
+            //If there are more chains in the node then we add it to the heap
             if( curr.getNext() != null ){
                 minPQ.offer(curr.getNext());
             }

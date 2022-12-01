@@ -5,13 +5,14 @@ import java.util.*;
 
 public class InsertInterval {
 
-    //Input: intervals = [[1,3],[6,9]], newInterval = [2,5]
-    //Output: [[1,5],[6,9]]
     /**
      * Given non-overlapping intervals sorted in ascending order by start time.
      * You are also given an interval newInterval
      * Insert newInterval into intervals such that intervals is still sorted in ascending order
      * and intervals still does not have any overlapping intervals (merge overlapping intervals if necessary)
+     *
+     * Input    : intervals = [[1,3],[6,9]], newInterval = [2,5]
+     * Output   : [[1,5],[6,9]]
      */
     public int[][] insertIntervalAndMergeOverlappingIntervals( int[][] intervals, int[] newInterval ){
 

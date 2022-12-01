@@ -28,7 +28,7 @@ public class LinkedList {
 
 
     //Floyd's tortoise and hare algorithm
-    public boolean hasCycle(ListNode head) {
+    public boolean hasCycle( ListNode head ){
         ListNode slow = head;
         ListNode fast = head;
 

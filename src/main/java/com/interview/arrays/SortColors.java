@@ -4,8 +4,11 @@ import java.util.*;
 
 public class SortColors {
 
-    //Red -> White -> Blue
-    // 0  -> 1     -> 2
+    /**
+     * Given an array objects colored red, white, or blue.
+     * Sort them in-place so that objects of the same color are adjacent in the order red, white, and blue.
+     *
+     */
 
     //Get the frequency of the colors, since we know which order they should be in, lay them out.
     public void sortColors( int[] nums ){
