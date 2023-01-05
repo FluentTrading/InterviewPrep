@@ -1,4 +1,4 @@
-package com.interview.mlp;
+package com.interview.intervals;
 
 import java.util.Arrays;
 

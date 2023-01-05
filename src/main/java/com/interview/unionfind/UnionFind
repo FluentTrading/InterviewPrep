@@ -1,0 +1,15 @@
+Union-Find is a data structure that keeps track of a set of elements partitioned into a number of disjoint (non-overlapping) subsets.
+So, no elements belong to more than one set.
+
+UF supports two operations:
+Find:   Given a node n, find the root of n.
+Union:  Give two nodes u and v, merge them together if they are disjoint.
+
+
+How to flatten a 2D point to 1D:
+-------------------------------------------------------------------------
+{1, 2, 3, 4}
+{5, 6, 7, 8}
+
+If we were to fit this 2D array into 1D array, we could append the 2nd row to the end of first row.
+The transformation would be : (rowIndx, colIndx) = (rowIndx * colCount) + colIndx where rowIdx & colIndx start from 0.

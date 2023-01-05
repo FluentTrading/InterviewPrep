@@ -5,39 +5,44 @@ import java.util.*;
 
 public class RottingOranges {
 
+    //TODO: Solve using DFS
     public int orangesRotting(int[][] grid) {
 
-        int freshCount = 0;
         int rows = grid.length;
         int cols = grid[0].length;
-        Queue<int[]> rottenQueue = new ArrayDeque<>();
+        int fresh_cnt = 0;
+        Queue<int[]> rotten = new ArrayDeque<>();
 
-        //Go over the grid and add coordinates of rotten, plus get a count of fresh oranges.
-        for( int rowIndx = 0; rowIndx<rows; rowIndx++ ){
-            for( int colIndx = 0; colIndx<cols; colIndx++ ){
-                if (grid[rowIndx][colIndx] == 2) {
-                    rottenQueue.add(new int[]{rowIndx, colIndx});
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                if (grid[r][c] == 2) {
+                    rotten.add(new int[]{r, c});
 
-                }else if( grid[rowIndx][colIndx] == 1 ){
-                    ++freshCount;
+                } else if (grid[r][c] == 1) {
+                    ++fresh_cnt;
                 }
             }
         }
 
+        System.out.println("Fresh count: " + fresh_cnt);
 
+        // keep track of minutes passed.
+        if(fresh_cnt == 0) return 0;
         int minutes_passed = 0;
-        int[][] directions = { {1,0},{-1,0},{0,1},{0,-1} };
+        int[][] directions = {{1,0},{-1,0},{0,1},{0,-1}};
 
-        //Start BFS
-        while( rottenQueue.isEmpty() && freshCount > 0 ){
+        //If there are rotten oranges in the queue and there are still fresh oranges in the grid keep looping
+        while( !rotten.isEmpty() && fresh_cnt > 0 ){
+
+            //update the number of minutes passed
+            //it is safe to update the minutes by 1, since we visit oranges level by level in BFS traversal.
             ++minutes_passed;
-
-            int size = rottenQueue.size();
+            int size = rotten.size();
 
             for( int i=0 ;i <size; i++ ){
-                int[] pop = rottenQueue.poll();
+                int[] pop = rotten.poll();
 
-                for( int[] direction : directions ){
+                for (int[] direction : directions) {
                     int xx = pop[0] + direction[0];
                     int yy = pop[1] + direction[1];
 
@@ -51,22 +56,41 @@ public class RottingOranges {
                         continue;
                     }
 
-                    //This orange is rotten, decrease the fresh oranges count
-                    --freshCount;
+                    //# update the fresh oranges count
+                    --fresh_cnt;
 
-                    //Mark the current fresh orange as rotten in the grid
+                    //mark the current fresh orange as rotten
                     grid[xx][yy] = 2;
 
-                    //Add the current coordinate to the rottenQueue so we can traverse further
-                    rottenQueue.add( new int[]{xx, yy} );
+                    //# add the current rotten to the queue
+                    rotten.add(new int[]{xx, yy});
 
                 }
+
             }
+
+            //iterate through rotten, popping off the (row, col) that's currently in rotten
+            //we don't touch the newly added (row, col) that are added during the loop until the next loop
+
+            //# process rotten oranges on the current level
+
         }
 
-        //If there are still some fresh oranges left, then we failed to make all of them rotten. Return -1
-        return (freshCount != 0) ? -1 : (minutes_passed );
+        //if fresh is not empty, then there is an orange we were not able to reach 4-directionally
 
+        return fresh_cnt == 0 ? minutes_passed : -1;
+
+    }
+
+    public static void main( String[] args ){
+        RottingOranges count = new RottingOranges();
+        int num = count.orangesRotting( new int[][]{
+                { 2, 1, 1},
+                { 1, 1, 0},
+                { 0, 1, 1}
+        });
+
+        System.out.println(num);
     }
 
 }

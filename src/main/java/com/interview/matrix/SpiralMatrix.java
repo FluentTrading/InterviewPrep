@@ -1,60 +1,73 @@
 package com.interview.matrix;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
 
 public class SpiralMatrix {
 
-    public List<Integer> spiralOrder(int[][] matrix ){
+    public List<Integer> spiralOrder( int[][] matrix ){
 
         List<Integer> result = new ArrayList<>();
 
-        int startRow = 0;
-        int endRow = matrix.length-1;
-        int startCol = 0;
-        int endCol = matrix[0].length - 1;
+        int topRow = 0;
+        int bottomRow = matrix.length-1;
+        int leftCol = 0;
+        int rightCol = matrix[0].length - 1;
 
         int direction = 0;
 
-        while( startRow <= endRow && startCol <= endCol ){
+        while( topRow <= bottomRow && leftCol <= rightCol ){
 
             switch( direction ){
 
                 case 0: //RIGHT
-                    for(int col = startCol; col <= endCol; col++){
-                        result.add(matrix[startRow][col]);
+                    for(int col = leftCol; col <= rightCol; col++){
+                        result.add(matrix[topRow][col]);
                     }
-                    startRow++;
+                    ++topRow;
                     break;
 
                 case 1: //DOWN
-                    for( int row = startRow; row <=endRow; row++ ){
-                        result.add(matrix[row][endCol]);
+                    for( int row = topRow; row <=bottomRow; row++ ){
+                        result.add(matrix[row][rightCol]);
                     }
-                    endCol--;
+                    --rightCol;
                     break;
 
-                case 2://LEFT
-                    for(int col = endCol; col >= startCol; col --){
-                        result.add(matrix[endRow][col]);
+                case 2: //LEFT
+                    for(int col = rightCol; col >= leftCol; col --){
+                        result.add(matrix[bottomRow][col]);
                     }
-                    endRow--;
+                    --bottomRow;
                     break;
 
-                case 3://UP
-                    for(int row = endRow; row >= startRow; row--){
-                        result.add(matrix[row][startCol]);
+                case 3: //UP
+                    for(int row = bottomRow; row >= topRow; row--){
+                        result.add(matrix[row][leftCol]);
                     }
-                    startCol++;
+                    ++leftCol;
                     break;
-
             }
 
-            direction = (++direction) % 4;
+            direction = (++direction)%4;
         }
 
         return result;
 
+    }
+
+    public static void main( String[] args ){
+        SpiralMatrix matrix = new SpiralMatrix();
+        int[][] data = new int[][]{
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 }
+        };
+
+        System.out.println("Input\n: " + Arrays.deepToString(data));
+        matrix.spiralOrder( data );
     }
 
 }

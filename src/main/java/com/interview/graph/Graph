@@ -1,0 +1,21 @@
+What is Graph: G = (V,E)
+A collection of vertices (V) and edges(E) between them.
+These edges might be weighted or non-weighted (representing costs or distance etc).
+A sequence of edges between two nodes is called a Path.
+Graphs are used to simulate many real-world problems, such as paths in cities, circuit networks, and social networks.
+
+There are two kinds:
+- Undirected  : Both ways, you can traverse in either direction between two nodes.
+- Directed    : One way, can only traverse in the specified direction between two nodes.
+
+There are two common ways to represent a graph:
+- Adjacency List:   Used to represent sparse graph (used more often)
+- Adjacency Matrix: Is a square matrix with dimensions equal to number of nodes. Preferred when the graph is dense.
+
+
+Searching in the graph:
+- DFS visits every vertex (V) once and checks every edge (E) in the graph once. Therefore, complexity is O(V+E).
+- BFS has a complexity of O(V+E) since every vertex and every edge will be checked once. Depending on the input to the graph, O(E) could be between O(1) and O(V2).
+
+
+NOTE: Acyclic means there are no cycles.
